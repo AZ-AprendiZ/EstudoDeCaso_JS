@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo dirigido
+    </title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <header>
+        <h1>JavaScript</h1>
+        <h3>Desenvolvedores:</h3>
+        <p>&lt;Kaio Sousa&gt;; &lt;Matheus Oliveira&gt;; <br>&lt;Paulo César&gt;; &lt;Rafaella Victoria&gt;;<br>&lt;Ubiratã Rodrigues&gt;</p>
+
+  
+    </header>
+    <main>
+        <!-- Botões para selecionar a disciplina -->
+        <div class="disciplinas">
+            <button class="disciplina-btn" data-disciplina="variaveis">Variáveis</button>
+            <button class="disciplina-btn" data-disciplina="objetos">Objetos</button>
+            <button class="disciplina-btn" data-disciplina="decisao">Decisão</button>
+            <button class="disciplina-btn" data-disciplina="lacos">Laços</button>
+        </div>
+
+        <!-- Botões para subitens de "Laços" -->
+        <div id="subitens" style="display: none;">
+            <button class="subitem-btn" data-subitem="while">JavaScript While Loop</button>
+            <button class="subitem-btn" data-subitem="forLoop">JavaScript for Loop</button>
+            <button class="subitem-btn" data-subitem="map">JavaScript .map</button>
+            <button class="subitem-btn" data-subitem="filter">JavaScript .filter</button>
+            <button class="subitem-btn" data-subitem="reduce">JavaScript .reduce</button>
+            <button class="subitem-btn" data-subitem="forIn">JavaScript for in</button>
+            <button class="subitem-btn" data-subitem="forOf">JavaScript for of</button>
+            <button class="subitem-btn" data-subitem="forEach">JavaScript for of</button>
+        </div>
+
+        <!-- Título e descrição da disciplina -->
+        <h2 id="disciplina-titulo">Título da Disciplina</h2>
+        <p id="disciplina-descricao">Descrição da disciplina selecionada.</p>
+
+        <div id="editor">console.log('Hello, World!');</div>
+        <button id="run">Executar Código</button>
+        <h2>Saída:</h2>
+        <pre id="output"></pre>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa o editor Ace
+            const editor = ace.edit('editor');
+            editor.setTheme('ace/theme/monokai');
+            editor.session.setMode('ace/mode/javascript');
+
+            // Define os textos e códigos para cada subitem de "Laços"
+            const disciplinas = {
+                variaveis: {
+                    titulo: 'Tipos de Variáveis',
+                    descricao: 'VAR, LET e CONST:',
+                    codigo: `
+// No JavaScript, a palavra-chave var é usada para declarar variáveis. 
+// Essas variáveis podem armazenar valores de diferentes tipos, como números, strings, objetos, entre outros.
+
+var x = 10;
+console.log(x);
+
+console.log("- - - -");
+
+// A palavra-chave let no JavaScript é usada para declarar variáveis, assim como var, mas com algumas diferenças importantes que a tornam mais recomendada em muitos casos.
+
+let y = 10;
+if (true) {
+let y = 20;
+console.log(y);
+}
+console.log(y);
+// Em resumo, let oferece maior controle sobre o escopo e ajuda a evitar erros comuns associados ao uso de var.
+console.log("- - - -");
+
+// A palavra-chave const no JavaScript é usada para declarar variáveis constantes, ou seja, variáveis cujo valor não pode ser reatribuído após a declaração.
+
+// const v = 10;
+// v = 20; -- Erro! Não é possível reatribuir uma constante.
+
+const a = [1, 2, 3];
+a.push(4); // Isso é permitido, pois a estrutura interna do array pode mudar.
+console.log(a); 
+
+// Em resumo, const é utilizado para declarar valores que não devem ser alterados após sua inicialização, garantindo maior consistência no código.
+
+                    `
+                },
+                objetos: {
+                    titulo: 'Título da Disciplina',
+                    descricao: 'Descrição da disciplina.',
+                    codigo: ''
+                },
+                decisao: {
+                    titulo: 'Título da Disciplina',
+                    descricao: 'Descrição da disciplina.',
+                    codigo: ''
+                },
+                lacos: {
+                    titulo: 'JavaScript Laços',
+                    descricao: 'descrição',
+                    codigo: `
+
+                    `
+                },
+                while: {
+                    titulo: 'JavaScript While Loop',
+                    descricao: 'o while loop é um laço de repetição que percorre um bloco de código enquanto uma condição for verdadeira.',
+                    codigo: `
+
+let i = 0;
+// variável aberta que servirá como índice
+
+while (i < 10) {
+    //aqui está falando para repetir até que o número seja menor que 10
+    console.log("The number is " + i)
+    i++;
+    //isso adiciona +1 cada vez que o bloco de código e repetido
+
+}
+                    `
+                },
+                forLoop: {
+                    titulo: 'JavaScript for Loop',
+                    descricao: 'for e um laço de repetição que percorre um bloco de código várias vezes.',
+                    codigo: `
+const cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+
+let txt = "";
+for (let i = 0; i < cars.length; i++) { 
+//esse código tem a variável contador que inicia com 0, o comando para o indice pegar o tamanho do array cars e o i++ que conta sempre +1 para o indice.
+  txt += cars[i];
+  console.log(cars[i])
+}
+                    `
+
+                },
+                map: {
+                    titulo: 'JavaScript .map',
+                    descricao: 'O método .map cria uma nova matriz com os resultados da chamada de uma função para cada elemento na matriz original. Não executa a função para elementos vazios. Não altera a matriz original.',
+                    codigo: `
+const numbers = [65, 44, 12, 4];
+const newArr = numbers.map(myFunction);
+//aqui criamos uma nova variavel para receber os valores já modificados pela função que iremos criar.
+
+function myFunction(num) {
+    return num * 10;
+    //aqui colocamos qual e a função para ser executada a cada valor do array, que vai ser *10
+}
+    
+console.log(newArr)
+                    `
+                },
+                filter: {
+                    titulo: 'JavaScript .filter',
+                    descricao: 'O método .filter cria uma nova matriz preenchida com elementos que passam no teste fornecido pela função. Não executa a função para elementos vazios. Não altera a matriz original.',
+                    codigo: `
+const ages = [32, 33, 16, 40];
+
+
+function checkAdult(age) {
+    return age >= 18;
+}
+//ela cria uma funçao para ver quem tem mais ou 18 anos, se tiver 18 ou mais mostrara a idade na tela
+    
+console.log(ages.filter(checkAdult))
+
+                    `
+                },
+                reduce: {
+                    titulo: 'JavaScript .reduce',
+                    descricao: 'O método .reduce executa uma função redutora em cada elemento da matriz, resultando em um único valor: o resultado acumulado da função.(Não executa a função para elementos de array vazios. Não altera a matriz original.)',
+                    codigo: `
+const number = [25, 10, 10];
+
+function myFunc(total, num) {
+    return total - num;
+} //a função executada para diminuir o foi a subtração de todos os valores do array.
+
+console.log(number.reduce(myFunc))
+                    `
+
+                },
+                forIn: {
+                    titulo: 'JavaScript for in',
+                    descricao: 'A instrução JavaScript for in percorre as propriedades de um objeto.',
+                    codigo: `
+const numero = [45, 4, 9, 16, 25];
+
+
+for (let x in numero) {//aqui colocaos para a variavel x ser o indice com o metodo in onde pode escolher o índice que ira repetir do tamanho do array ou colocar a variavel do indice onde mostrara todos os itens do array.
+    console.log(numero[x])
+}
+                    `
+
+                },
+                forOf: {
+                    titulo: 'JavaScript for of',
+                    descricao: 'A instrução JavaScript for of percorre os valores de um objeto iterável. Permite fazer um loop em estruturas de dados iteráveis, como matrizes, strings, mapas, listas de nós e muito mais.',
+                    codigo: `
+let language = "JavaScript";
+for (let x of language) {
+    console.log(x)
+    }//aqui usamos o for of para ele iterar as letras de uma string onde ele coloca cada letra da palavra javascript
+    
+    
+const carros = ["BMW", "Volvo", "Mini"];
+for (let x of carros) {
+    console.log(x)
+}//aqui usamos for of para iterar o array dos carros
+
+                    `
+                },
+                forEach: {
+                    titulo: 'JavaScript forEach',
+                    descricao: 'O método chama uma função para cada elemento em uma matriz. Não é executado para elementos vazios.',
+                    codigo: `
+let sum = 0;
+const numbers1 = [65, 44, 12, 4];
+numbers1.forEach(myFunction);
+
+function myFunction(item) {
+    sum += item; 
+    //essa função chamada para cada elemento e a soma, onde , onde todos os itens são somadas.
+    }
+
+console.log(sum)
+                    `
+                }
+            };
+
+            // Função para executar o código JavaScript
+            function runCode() {
+                const code = editor.getValue();
+                const output = document.getElementById('output');
+                output.textContent = ''; // Limpa o output anterior
+
+                // Redefine o console.log para capturar o output
+                const originalConsoleLog = console.log;
+                try {
+                    console.log = function(message) {
+                        output.textContent += message + '\n';
+                    };
+
+                    // Executa o código
+                    new Function(code)();
+                } catch (e) {
+                    output.textContent = `Erro: ${e.message}`;
+                } finally {
+                    console.log = originalConsoleLog;
+                }
+            }
+
+            // Atualiza o editor e outros elementos com base no botão clicado
+            function updateContent(disciplina) {
+                const content = disciplinas[disciplina];
+                if (content) {
+                    document.getElementById('disciplina-titulo').textContent = content.titulo;
+                    document.getElementById('disciplina-descricao').textContent = content.descricao;
+                    editor.setValue(content.codigo);
+                }
+            }
+
+            // Adiciona o evento de clique aos botões de disciplina
+            document.querySelectorAll('.disciplina-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const disciplina = btn.getAttribute('data-disciplina');
+                    if (disciplina === 'lacos') {
+                        document.getElementById('subitens').style.display = 'block';
+                    } else {
+                        document.getElementById('subitens').style.display = 'none';
+                    }
+                    updateContent(disciplina);
+                });
+            });
+
+            // Adiciona o evento de clique aos botões de subitem
+            document.querySelectorAll('.subitem-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const subitem = btn.getAttribute('data-subitem');
+                    updateContent(subitem);
+                });
+            });
+
+            // Adiciona o evento de clique ao botão de execução
+            document.getElementById('run').addEventListener('click', runCode);
+        });
+    </script>
+</body>
+</html>
