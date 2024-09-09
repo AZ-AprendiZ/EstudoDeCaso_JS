@@ -37,6 +37,19 @@
             <button class="subitem-btn" data-subitem="forOf">JavaScript for of</button>
             <button class="subitem-btn" data-subitem="forEach">JavaScript for of</button>
         </div>
+        <div id="subitens_obj" style="display: none;">
+            <button class="subitem-btn" data-subitem="objects">Objects</button>
+            <button class="subitem-btn" data-subitem="properties">Properties</button>
+            <button class="subitem-btn" data-subitem="methods">Methods</button>
+            <button class="subitem-btn" data-subitem="display">Display</button>
+            <button class="subitem-btn" data-subitem="constructors">Constructors</button>
+        </div>
+        <div id="subitens_decisao" style="display: none;">
+            <button class="subitem-btn" data-subitem="if"> If, Else, Else If</button>
+            <button class="subitem-btn" data-subitem="switch"> Switch</button>
+            <button class="subitem-btn" data-subitem="ternario"> Operador Ternário</button>
+
+        </div>
 
         <!-- Título e descrição da disciplina -->
         <h2 id="disciplina-titulo">Título da Disciplina</h2>
@@ -93,21 +106,164 @@ console.log(a);
                     `
                 },
                 objetos: {
-                    titulo: 'Título da Disciplina',
-                    descricao: 'Descrição da disciplina.',
-                    codigo: ''
+                    titulo: 'JavaScript Objetos',
+                    descricao: 'Selecione uma opção',
+                    codigo: '// Selecione uma opção'
+                },
+                objects: {
+                    titulo: 'JavaScript Objects (Objetos em JavaScript)',
+                    descricao: 'Objetos em JavaScript são coleções de pares chave-valor. Eles permitem armazenar dados e funções relacionadas a esses dados. São uma das principais estruturas de dados em JavaScript e podem ser criados de várias maneiras.',
+                    codigo: `
+// Criando um objeto simples
+const pessoa = {
+  nome: 'Maria',
+  idade: 30
+};
+                    `
+                },
+                properties: {
+                    titulo: 'JavaScript Object Properties (Propriedades de Objetos em JavaScript)',
+                    descricao: 'Propriedades de objetos são pares chave-valor onde a chave é uma string (ou Symbol) e o valor pode ser qualquer tipo de dado. Propriedades podem ser acessadas e modificadas usando a notação de ponto ou colchetes.',
+                    codigo: `
+const carro = {
+  marca: 'Toyota',
+  modelo: 'Corolla',
+  ano: 2022
+};
+
+// Acessando propriedades
+console.log(carro.marca); // 'Toyota'
+console.log(carro['ano']); // 2022
+
+// Modificando propriedades
+carro.marca = 'Honda';
+carro['modelo'] = 'Civic';
+                    `
+                },
+                methods: {
+                    titulo: 'JavaScript Object Methods (Métodos de Objetos em JavaScript)',
+                    descricao: 'Métodos de objetos são funções que estão associadas a um objeto. Eles são definidos como propriedades do objeto que contêm uma função.',
+                    codigo: `
+const calculadora = {
+  somar(a, b) {
+    return a + b;
+  },
+  subtrair(a, b) {
+    return a - b;
+  }
+};
+
+console.log(calculadora.somar(5, 3)); // 8
+console.log(calculadora.subtrair(5, 3)); // 2
+                    `
+                },
+                display: {
+                    titulo: 'JavaScript Object Display (Exibição de Objetos em JavaScript)',
+                    descricao: 'Para exibir um objeto em JavaScript, você pode usar console.log ou converter o objeto em uma string JSON com JSON.stringify.',
+                    codigo: `
+const aluno = {
+  nome: 'João',
+  idade: 22
+};
+
+// Exibindo o objeto diretamente
+console.log(aluno);
+
+// Convertendo o objeto para uma string JSON
+console.log(JSON.stringify(aluno)); // '{"nome":"João","idade":22}'
+                    `
+                },
+                constructors: {
+                    titulo: ' JavaScript Object Constructors (Construtores de Objetos em JavaScript)',
+                    descricao: 'Construtores de objetos são funções que criam e inicializam objetos. Em JavaScript, você pode criar construtores com funções ou usando classes.',
+                    codigo: `
+function Animal(nome, tipo) {
+  this.nome = nome;
+  this.tipo = tipo;
+}
+
+const cachorro = new Animal('Rex', 'Cachorro');
+console.log(cachorro.nome); // 'Rex'
+console.log(cachorro.tipo); // 'Cachorro'
+
+                    `
                 },
                 decisao: {
-                    titulo: 'Título da Disciplina',
-                    descricao: 'Descrição da disciplina.',
-                    codigo: ''
+                    titulo: 'Decisão',
+                    descricao: 'Selecione uma opção',
+                    codigo: `
+// Selecione uma opção 
+                    `
+                },
+                if: {
+                    titulo: 'If, Else, Else If',
+                    descricao: 'if, else, e else if são estruturas de controle de fluxo usadas para executar diferentes blocos de código com base em condições. A condição é avaliada e, se verdadeira, o bloco de código correspondente é executado.',
+                    codigo: `
+const idade = 18;
+
+if (idade < 18) {
+  console.log('Você é menor de idade.');
+} else if (idade === 18) {
+  console.log('Você acaba de atingir a maioridade.');
+} else {
+  console.log('Você é maior de idade.');
+}
+                    `
+                },
+                switch: {
+                    titulo: 'Switch',
+                    descricao: 'A estrutura switch é usada para realizar múltiplas verificações de valores de uma variável. É uma alternativa ao uso de muitos if e else if, tornando o código mais limpo e organizado para casos onde você precisa verificar uma variável contra vários valores possíveis.',
+                    codigo: `
+const dia = 3; // Terça-feira
+
+switch (dia) {
+  case 1:
+    console.log('Segunda-feira');
+    break;
+  case 2:
+    console.log('Terça-feira');
+    break;
+  case 3:
+    console.log('Quarta-feira');
+    break;
+  case 4:
+    console.log('Quinta-feira');
+    break;
+  case 5:
+    console.log('Sexta-feira');
+    break;
+  case 6:
+    console.log('Sábado');
+    break;
+  case 7:
+    console.log('Domingo');
+    break;
+  default:
+    console.log('Dia inválido');
+}
+                    `
+                },
+                ternario: {
+                    titulo: ' Operador Ternário',
+                    descricao: ' O operador ternário é uma forma concisa de escrever uma expressão if-else. Ele tem a forma condição ? valor_se_verdadeiro : valor_se_falso e é útil para atribuições ou retornos rápidos com base em uma condição.',
+                    codigo: `
+const idade = 20;
+
+// Usando operador ternário para atribuição
+const resultado = idade >= 18 ? 'Maior de idade' : 'Menor de idade';
+
+console.log(resultado); // 'Maior de idade'
+
+// Usando operador ternário em uma expressão
+const mensagem = idade >= 18 ? 'Você pode votar.' : 'Você não pode votar.';
+console.log(mensagem); // 'Você pode votar.'
+
+                    `
                 },
                 lacos: {
                     titulo: 'JavaScript Laços',
-                    descricao: 'descrição',
-                    codigo: `
-
-                    `
+                    descricao: 'Selecione uma opção',
+                    codigo: '// Selecione uma opção'
                 },
                 while: {
                     titulo: 'JavaScript While Loop',
@@ -276,6 +432,18 @@ console.log(sum)
                     } else {
                         document.getElementById('subitens').style.display = 'none';
                     }
+                    if (disciplina === 'objetos') {
+                        document.getElementById('subitens_obj').style.display = 'block';
+                    } else {
+                        document.getElementById('subitens_obj').style.display = 'none';
+                    }
+                    if (disciplina === 'decisao') {
+                        document.getElementById('subitens_decisao').style.display = 'block';
+                    } else {
+                        document.getElementById('subitens_decisao').style.display = 'none';
+                    }
+
+
                     updateContent(disciplina);
                 });
             });
